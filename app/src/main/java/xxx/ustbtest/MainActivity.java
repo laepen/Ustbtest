@@ -43,5 +43,21 @@ public class MainActivity extends AppCompatActivity {
     protected void inputListener(){
         //show received data from bus
     }
+	
+
+	public void foo(){
+
+        UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+
+        HashMap<String, UsbDevice> allDevices = manager.getDeviceList();
+
+        String devicelist = "Devices found:\n";
+        for(String skey : allDevices.keySet()){
+            devicelist += ("skey:" + skey + "\n" +
+                    "device:" + allDevices.get(skey).toString() + " \n" +
+                    "------\n");
+        }
+        logTextView.setText(devicelist); /* change this to your textview*/
+    }
 
 }
